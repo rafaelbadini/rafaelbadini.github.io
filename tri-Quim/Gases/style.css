@@ -1,0 +1,21 @@
+h1{ font-size: 60px;
+	text-align: center;
+	color: pink;
+ }
+ h2{
+	 color: purple;
+ }
+ h3{ font-family: times new roman;
+ 	font-size: 20px;
+	 text-align:justify;
+
+ }
+ body{ background-color: black; 
+ 	color: white;
+ }
+ section{
+ 	background-color: white;
+ }
+ ol{
+	 color:aqua;
+ }
