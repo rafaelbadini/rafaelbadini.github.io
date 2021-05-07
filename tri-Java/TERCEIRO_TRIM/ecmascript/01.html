@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(function () {
+            $("#go").click(function () {
+                alert("teste");
+                let array_text = $("#array_text").val();
+                array_text = array_text.replace(/\s+/g, '');
+                let array = array_text.split(",");
+                let tam = array.length;
+                if (array[tam - 1] == "") {
+                    array.pop();
+                }
+                $("#result").html("<br/>Valor minimo: " + minimo(array) + "<br/> Valor máximo: " + maximo(array) + "<br/> Array sem repetição: " + sem_repetir(array) + "<br/> Array em ordem: " + ordem_crescente(array));
+            })
+            $("#sem_repeticao").click(function () {
+                $("#result").text("");
+                $("#array_text").val("");
+            })
+            function minimo(vetor) {
+                let min;
+                vetor.forEach(function (num) {
+                    if (num == Math.min(...vetor)) {
+                        min = num;
+                    }
+                });
+                return min;
+            }
+            function maximo(vetor) {
+                let max;
+                vetor.forEach(function (num) {
+                    if (num == Math.max(...vetor)) {
+                        max = num;
+                    }
+                });
+                return max;
+            }
+            function sem_repetir(vetor) {
+                let vetor_sem_repeticao = [...new Set(vetor)];
+                return vetor_sem_repeticao.join(",");
+            }
+            function ordem_crescente(vetor) {
+                return vetor.sort().join(",");
+            }
+        })
+    </script>
+</head>
+
+<body>
+
+    <p>Crie um script que implemente as funções min, max, uniq, sortNum. Tais funções devem:
+    Retornar o valor mínimo (min) e máximo (max) de um array de números, retornar o array sem repetições (uniq) e
+    ordenar o array numérico (sortNum):
+    </p>
+    <br>
+    <input type="text" id="array_text" placeholder="Insira o array">
+    <button type="button" id="go">Executar</button>
+    <button type="button" id="sem_repeticao" >Executar</button>
+    <p id="result"></p>
+    <footer>
+        <a class="return" href="../principal.html">Voltar</a>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(function () {
+            $("#go").click(function () {
+                let array_text = $("#array_text").val();
+                array_text = array_text.replace(/\s+/g, '');
+                let array = array_text.split(",");
+                let tam = array.length;
+                if (array[tam - 1] == "") {
+                    array.pop();
+                }
+                $("#result").html("<br>Sequencia de fibonacci até " + array_text + " números: " + fibonacci(array_text));
+            })
+            $("#sem_repeticao").click(function () {
+                $("#result").text("");
+                $("#array_text").val("");
+            })
+            function fibonacci(z) {
+                let array = new Array;
+                array.push(0);
+                let a = 0;
+                let b = 1;
+                let f = 1;
+                for (let i = 0; i < z - 1; i++) {
+                    array.push(f);
+                    f = a + b;
+                    a = b;
+                    b = f;
+                }
+                return array.join(",");
+            }
+        })
+    </script>
+</head>
+
+<body>
+    <p>fibonacci</p>
+    <br>
+    <input type="text" id="array_text" placeholder="Posição fibonacci">
+    <button type="button" id="go">Executar</button>
+    <button type="button" id="sem_repeticao">Executar</button>
+    <p id="result"></p>
+    <footer>
+        <a class="return" href="../principal.html">Voltar</a>
+    </footer>
+</body>
+</html>

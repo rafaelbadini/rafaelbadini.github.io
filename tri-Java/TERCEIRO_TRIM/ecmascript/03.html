@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(function () {
+            $("#go").click(function () {
+                let array_text = $("#array_text").val();
+                array_text = array_text.replace(/\s+/g, '');
+                let array = array_text.split(",");
+                let tam = array.length;
+                if (array[tam - 1] == "") {
+                    array.pop();
+                }
+                $("#result").html("<br/>Duplicados " + elemento_duplicado(array) + "<br/> pares: " + array_par(array) + "<br/> Soma dos elementos: " + soma(array));
+            })
+            $("#sem_repeticao").click(function () {
+                $("#result").text("");
+                $("#array_text").val("");
+            })
+            function elemento_duplicado(vetor) {
+                let x = vetor.map(function (num) {
+                    return num * 2;
+                })
+                return x;
+            }
+            function array_par(vetor) {
+                let x = vetor.filter(function (num) {
+                    return num % 2 == 0;
+                })
+                if (x == "") {
+                    return "Não há valores pares"
+                }
+                else {
+                    return x;
+                }
+            }
+            function soma(vetor) {
+                let x = vetor.reduce(function (soma, num) {
+                    return parseInt(soma) + parseInt(num);
+                });
+                return x;
+            }
+
+        })
+    </script>
+</head>
+
+<body>
+
+    <p>Implemente uma função double(), que retorne o array com cada um dos elementos duplicado. A função deve usar map.
+    Implemente uma função evenElements(), que retorne um array com apenas os elementos pares do array original. 
+    A função deve usar filter.
+    Implemente uma função sum(), que retorne a soma de todos os elementos do array. A função deve usar reduce.</p>
+    <br>
+    <input type="text" id="array_text" placeholder="Array">
+    <button type="button" id="go">Executar</button>
+    <button type="button" id="sem_repeticao">Executar</button>
+    <p id="result"></p>
+    <footer>
+        <a class="return" href="../principal.html">Voltar</a>
+    </footer>
+</body>
+
+</html>
