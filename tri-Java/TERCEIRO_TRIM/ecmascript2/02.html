@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      $(function () {
+        $("#go").click(function () {
+          let salario = $("#val1").val();
+          console.log(salario);
+          $("#result").text("a taxa é= :" + imposto(salario) + " reais.");
+        });
+
+        $("#no_repeat").click(function () {
+          $("#val1").val("");
+          $("#result").text("");
+        });
+
+        function imposto(sal) {
+          sal = parseFloat(sal);
+          if (sal <= 1903.99) {
+            return "Sem taxas!";
+          }
+          if (sal > 1903.99 && sal <= 2826.65) {
+            return sal * 0.075 - 142.8;
+          }
+          if (sal > 2826.65 && sal <= 3751.05) {
+            return sal * 0.15 - 354.8;
+          }
+          if (sal > 3751.05 && sal <= 4664.68) {
+            return sal * 0.225 - 636.13;
+          }
+          if (sal > 4664.68) {
+            return sal * 0.275 - 869.36;
+          }
+        }
+      });
+    </script>
+  </head>
+
+  <body>
+    <p>
+      Faça um programa que realize o cálculo do imposto de renda de acordo com o
+      salário mensal, baseado nas alíquotas da Tabela:
+    </p>
+    <br />
+    <input type="number" id="val1" placeholder="salário" />
+    <button type="button" id="go">Operar</button>
+    <button type="button" id="no_repeat">Limpar</button>
+    <p id="result"></p>
+    <footer>
+      <a class="return" href="../principal.html">Voltar</a>
+    </footer>
+  </body>
+</html>

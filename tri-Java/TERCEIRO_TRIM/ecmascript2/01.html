@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      $(function () {
+        $("#go").click(function () {
+          let valor1 = $("#val1").val();
+          let valor2 = $("#val2").val();
+          let operacao = $("#key").val();
+          $("#result").text("Resultado = " + calcularop(valor1, valor2, operacao));
+        });
+
+        $("#no_repeat").click(function () {
+          $("#val1").val("");
+          $("#val2").val("");
+          $("#result").text("");
+        });
+
+        function calcularop(val1, val2, op) {
+          valor1 = parseFloat(val1);
+          valor2 = parseFloat(val2);
+          switch (op) {
+            case "Soma":
+              return valor1 + valor2;
+              break;
+            case "Subtração":
+              return valor1 - valor2;
+              break;
+            case "Multiplicação":
+              return valor1 * valor2;
+              break;
+            case "Divisão":
+              return valor1 / valor2;
+              break;
+          }
+        }
+      });
+    </script>
+  </head>
+
+  <body>
+    <p>Calculadora, Coloque os valores e depois a operação:</p>
+    <br />
+    <input type="number" id="val1" placeholder="valor1" />
+    <input type="number" id="val2" placeholder="valor2" />
+    <select id="key">
+        <option>Soma</option>
+        <option>Subtração</option>
+        <option>Multiplicação</option>
+        <option>Divisão</option>
+      </select>
+    <br />
+    <button type="button" id="go">Operar</button>
+    <button type="button" id="no_repeat">Limpar</button>
+
+    <p id="result"></p>
+    <footer>
+      <a class="return" href="../principal.html">Voltar</a>
+    </footer>
+  </body>
+</html>
